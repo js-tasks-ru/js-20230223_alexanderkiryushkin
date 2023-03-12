@@ -1,5 +1,6 @@
 export default class NotificationMessage {
 
+  static notifyShow;
 
   constructor(message, {
     duration,
@@ -8,7 +9,6 @@ export default class NotificationMessage {
     this.message = message;
     this.duration = duration;
     this.type = type;
-
     this.template = `
     <div class="notification ${this.type}" style="--value:${this.duration / 1000}s">
     <div class="timer"></div>
@@ -19,6 +19,7 @@ export default class NotificationMessage {
     </div>
     `;
 
+    this.showOnlyOneNotify();
     this.render();
   }
 
@@ -41,20 +42,24 @@ export default class NotificationMessage {
   }
 
 
+  showOnlyOneNotify() {
+    if (NotificationMessage.notifyShow) {
+      NotificationMessage.notifyShow.remove();
+    }
+  }
+
+
   render() {
-
-
     const tempWrapper = document.createElement('div');
     tempWrapper.innerHTML = this.template;
     this.element = tempWrapper.firstElementChild;
+    NotificationMessage.notifyShow = this.element;
   }
 
 
   show(target = document.body) {
-
     target.append(this.element);
     setTimeout(() => this.remove(), this.duration);
-
   }
 
 
