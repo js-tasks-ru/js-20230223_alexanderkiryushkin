@@ -25,7 +25,7 @@ export default class ColumnChart {
 
   renderFullTemplate() {
     return `
-    <div class="column-chart ${this.getLoadingClass()}" style="--chart-height: 50">
+    <div class="column-chart ${this.getLoadingClass()}" style="--chart-height: ${this.chartHeight}">
     ${this.getChartTitle()}
     ${this.renderChart()}
     </div>

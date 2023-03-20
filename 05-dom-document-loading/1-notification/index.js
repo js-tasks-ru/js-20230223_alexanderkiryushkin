@@ -9,15 +9,7 @@ export default class NotificationMessage {
     this.message = message;
     this.duration = duration;
     this.type = type;
-    this.template = `
-    <div class="notification ${this.type}" style="--value:${this.duration / 1000}s">
-    <div class="timer"></div>
-    <div class="inner-wrapper">
-      ${this.getNotifyHeader()}
-      ${this.getNotifyBody()}
-      </div>
-    </div>
-    `;
+    this.template = this.getFullTemplate();
 
     this.showOnlyOneNotify();
     this.render();
@@ -41,6 +33,18 @@ export default class NotificationMessage {
     `;
   }
 
+
+  getFullTemplate() {
+    return `
+    <div class="notification ${this.type}" style="--value:${this.duration / 1000}s">
+    <div class="timer"></div>
+    <div class="inner-wrapper">
+      ${this.getNotifyHeader()}
+      ${this.getNotifyBody()}
+      </div>
+    </div>
+    `;
+  }
 
   showOnlyOneNotify() {
     if (NotificationMessage.notifyShow) {
