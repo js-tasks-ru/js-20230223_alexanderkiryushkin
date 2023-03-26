@@ -13,7 +13,6 @@ export default class ColumnChart {
     this.value = value;
     this.formatHeading = formatHeading;
     this.chartHeight = 50;
-    console.log(data);
     this.render();
   }
 
