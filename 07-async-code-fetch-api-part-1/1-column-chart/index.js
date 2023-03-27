@@ -36,6 +36,7 @@ export default class ColumnChart {
     return result;
   }
 
+
   getLoadingClass() {
     return (this.data.length > 0) ? "" : "column-chart_loading";
   }
@@ -122,6 +123,7 @@ export default class ColumnChart {
     return response;
   }
 
+
   async update(from, to) {
 
     const data = await this.loadData(from, to);
@@ -134,12 +136,14 @@ export default class ColumnChart {
     return data;
   }
 
+
   renderNewData() {
     this.element.classList.remove("column-chart_loading");
     this.value = this.data.reduce((a, b) => (a + b));
     this.subElements.header.innerHTML = this.formatHeading(this.value);
     this.subElements.body.innerHTML = this.getColumns(this.data);
   }
+
 
   remove() {
     this.element.remove();

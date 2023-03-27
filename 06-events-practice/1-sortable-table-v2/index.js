@@ -24,14 +24,12 @@ export default class SortableTable {
   }
 
 
-
   renderTableHeader() {
     return `
     <div data-element="header" class="sortable-table__header sortable-table__row">
       ${this.headersConfig.map((item) => this.renderHeaderRow(item)).join("")}
     </div>`;
   }
-
 
 
   renderHeaderRow({
