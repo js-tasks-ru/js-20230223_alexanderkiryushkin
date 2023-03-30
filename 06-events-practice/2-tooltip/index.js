@@ -2,13 +2,15 @@ class Tooltip {
   text = '';
   static sample;
 
+
   constructor() {
     if (!Tooltip.sample) {
       Tooltip.sample = this;
     } else {
       return Tooltip.sample;
     }
-
+    this.shiftX = 50;
+    this.shiftY = 10;
     this.render();
   }
 
@@ -33,10 +35,8 @@ class Tooltip {
 
 
   moveTooltip = (event) => {
-    const shiftX = 50;
-    const shiftY = 10;
-    this.element.style.left = `${Math.round(event.clientX + shiftX)}px`;
-    this.element.style.top = `${Math.round(event.clientY + shiftY)}px`;
+    this.element.style.left = `${Math.round(event.clientX + this.shiftX)}px`;
+    this.element.style.top = `${Math.round(event.clientY + this.shiftY)}px`;
   }
 
 
@@ -46,8 +46,8 @@ class Tooltip {
     }
     this.initialize();
     this.createTemplate(event.target.dataset.tooltip);
-    this.element.style.left = `${Math.round(event.clientX + 50)}px`;
-    this.element.style.top = `${Math.round(event.clientY + 10)}px`;
+    this.element.style.left = `${Math.round(event.clientX + this.shiftX)}px`;
+    this.element.style.top = `${Math.round(event.clientY + this.shiftY)}px`;
     document.addEventListener('pointermove', this.moveTooltip);
 
   }
@@ -78,3 +78,4 @@ class Tooltip {
 }
 
 export default Tooltip;
+

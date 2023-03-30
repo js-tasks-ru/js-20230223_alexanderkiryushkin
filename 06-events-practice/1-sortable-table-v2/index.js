@@ -24,14 +24,12 @@ export default class SortableTable {
   }
 
 
-
   renderTableHeader() {
     return `
     <div data-element="header" class="sortable-table__header sortable-table__row">
       ${this.headersConfig.map((item) => this.renderHeaderRow(item)).join("")}
     </div>`;
   }
-
 
 
   renderHeaderRow({
@@ -139,7 +137,6 @@ export default class SortableTable {
 
   clickForSorting = (event) => {
     const item = event.target.closest(`[data-sortable="true"]`);
-    console.log(item);
     if (item.dataset.sortable === 'false') return;
     if (item.dataset.sortable === 'true') {
       const order = item.dataset.order === 'desc' ? 'asc' : 'desc';
